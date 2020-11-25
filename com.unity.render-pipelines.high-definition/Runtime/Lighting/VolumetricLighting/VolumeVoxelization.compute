@@ -5,13 +5,10 @@
 // #pragma enable_d3d11_debug_symbols
 #pragma only_renderers d3d11 playstation xboxone vulkan metal switch
 
-#pragma kernel VolumeVoxelizationBruteforceOptimal VolumeVoxelization=VolumeVoxelizationBruteforceOptimal LIGHTLOOP_DISABLE_TILE_AND_CLUSTER VL_PRESET_OPTIMAL
-#pragma kernel VolumeVoxelizationTiledOptimal      VolumeVoxelization=VolumeVoxelizationTiledOptimal                                         VL_PRESET_OPTIMAL
-#pragma kernel VolumeVoxelizationBruteforce        VolumeVoxelization=VolumeVoxelizationBruteforce        LIGHTLOOP_DISABLE_TILE_AND_CLUSTER
-#pragma kernel VolumeVoxelizationTiled             VolumeVoxelization=VolumeVoxelizationTiled
-
-// Comment out the line to loop over all lights (for debugging purposes)
-#define COARSE_BINNING
+#pragma kernel VolumeVoxelizationBruteforceOptimal VolumeVoxelization=VolumeVoxelizationBruteforceOptimal 				 VL_PRESET_OPTIMAL
+#pragma kernel VolumeVoxelizationTiledOptimal      VolumeVoxelization=VolumeVoxelizationTiledOptimal      COARSE_BINNING VL_PRESET_OPTIMAL
+#pragma kernel VolumeVoxelizationBruteforce        VolumeVoxelization=VolumeVoxelizationBruteforce
+#pragma kernel VolumeVoxelizationTiled             VolumeVoxelization=VolumeVoxelizationTiled             COARSE_BINNING
 
 #ifdef VL_PRESET_OPTIMAL
     // E.g. for 1080p: (1920/8)x(1080/8)x(64) = 2,073,600 voxels
